@@ -5,9 +5,14 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.
 
 public class Drivetrain extends SubsystemBase {
   /** Creates a new Drivetrain. */
+
+  // Declare motor objects
+
+
   public Drivetrain() {}
 
   @Override
