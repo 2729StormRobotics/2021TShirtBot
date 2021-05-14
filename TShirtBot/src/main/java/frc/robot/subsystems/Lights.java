@@ -7,7 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /**
- * This version of Lights is designed to control a WS2812 LED strip directly, WITHOUT the Blinkin LED Driver that was used in 2019. 
+ * This version of Lights is designed to control a WS2812 LED strip directly, WITHOUT the Blinkin LED Driver that was used in 2020. 
  * This requires more complex controls work but allows more low-level software control. 
  */
 public class Lights extends SubsystemBase {
@@ -26,7 +26,7 @@ public class Lights extends SubsystemBase {
     m_ledBuffer = new AddressableLEDBuffer(/* TODO: kLedLength */);
     m_led.setLength(m_ledBuffer.getLength());
 
-    // Set the data
+    // Set the data.
     m_led.setData(m_ledBuffer);
     m_led.start();
 
