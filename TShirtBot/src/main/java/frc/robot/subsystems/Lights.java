@@ -5,6 +5,9 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.AddressableLED;
+import edu.wpi.first.wpilibj.AddressableLEDBuffer;
+
 
 /**
  * This version of Lights is designed to control a WS2812 LED strip directly, WITHOUT the Blinkin LED Driver that was used in 2020. 
@@ -19,7 +22,6 @@ public class Lights extends SubsystemBase {
   public Lights() {
 
     m_led = new AddressableLED(/* TODO: kLedPort (must be PWM port of Rio) */);
-
 
     // This is an expensive operation and must NOT be done periodically. 
     // Reuse this buffer. 
@@ -39,15 +41,12 @@ public class Lights extends SubsystemBase {
    */
   public void setSectionRGB(int start, int end, int r, int g, int b) {
     if (start >= 0 && end > start && end <= m_ledBuffer.getLength()) {
-
       for (int i = start; i < end; i++) {
         m_ledBuffer.setRGB(i, r, g, b);
       }
 
       m_led.setData(m_ledBuffer);
-
     }
-
   }
 
   /**
@@ -57,15 +56,19 @@ public class Lights extends SubsystemBase {
    */
   public void setSectionHSV(int start, int end, int h, int s, int v) {
     if (start >= 0 && end > start && end <= m_ledBuffer.getLength()) {
-
       for (int i = start; i < end; i++) {
         m_ledBuffer.setHSV(i, h, s, v);
       }
 
       m_led.setData(m_ledBuffer);
-
     }
+  }
 
+  /**
+   * Turns off the entire LED strip.
+   */
+  public void clear() {
+    setSectionRGB(0, m_ledBuffer.getLength(), 0, 0, 0);
   }
 
   @Override
