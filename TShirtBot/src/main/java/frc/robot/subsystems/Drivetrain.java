@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+//Need imports for the encoders.
+
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -33,7 +35,7 @@ public class Drivetrain extends SubsystemBase {
     m_rightMotor1 = new WPI_TalonSRX(kRightMotorPort1);
     m_rightMotor2 = new WPI_TalonSRX(kRightMotorPort2);
 
-    //I'm not sure which motor should follow which; it could be the other way.
+    //Not sure which motor should follow which; it could be the other way around.
     m_leftMotor2.follow(m_leftMotor1);
     m_rightMotor2.follow(m_rightMotor1);
 
